@@ -10,9 +10,9 @@
     </h2>
     <button type="button" class="btn btn-outline-primary"><a class="nav-link" href="{{ route('income.create') }}">Nuevo Ingreso</a></button>
     <div class="container"><br>
-    <table class="table table-dark">
+    <table class="table">
         <thead>
-            <tr>
+            <tr class="thead-dark">
                 <th scope="col">#</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Monto</th>
@@ -32,12 +32,14 @@
                             <td>{{$category->name}}</td>
                         @endif
                         <td>{{$income->date}}</td>
-                        <td>
-                        <a href="{{ route('income.edit', $income) }}" class="btn btn-warning">Editar</a>
-                        <a class="btn btn-danger" href="{{ route('income.destroy', $income) }}"
+                        <td class="text-center">
+                        <a href="{{ route('income.edit', $income) }}" class="btn btn-warning text-black-50 text-center">
+                            <i class="fas fa-edit"></i> 
+                        </a>
+                        <a class="btn btn-danger text-black-50 text-center" href="{{ route('income.destroy', $income) }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('delete-income').submit();">
-                                        Eliminar
+                                        <i class="fas fa-trash-alt"></i>
                                     </a>
 
                         <form id="delete-income" action="{{ route('income.destroy', $income) }}" method="POST" style="display: none;">

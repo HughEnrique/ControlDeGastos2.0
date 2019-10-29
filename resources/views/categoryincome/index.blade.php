@@ -25,14 +25,14 @@
             <th scope="row">{{$category->id}}</th>
                 <td>{{$category->name}}</td>
                 <td>{{$category->date}}</td>
-                <td>
-                <a href="{{ route('categoryincome.edit', $category) }}" class="btn btn-warning">
+                <td class="text-center">
+                <a href="{{ route('categoryincome.edit', $category) }}" class="btn btn-warning text-black-50 text-center">
                     <i class="fas fa-edit"></i>
                 </a>  
-                <a class="btn btn-danger" href="{{ route('categoryincome.destroy', $category) }}"
+                <a class="btn btn-danger text-black-50 text-center" href="{{ route('categoryincome.destroy', $category) }}"
                     onclick="event.preventDefault();
                     document.getElementById('delete-category').submit();">
-                    Eliminar
+                    <i class="fas fa-trash-alt"></i>
                 </a>
 
                 <form id="delete-category" action="{{ route('categoryincome.destroy', $category) }}" method="POST" style="display: none;">

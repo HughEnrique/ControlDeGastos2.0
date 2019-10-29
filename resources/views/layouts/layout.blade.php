@@ -17,9 +17,10 @@
     </div>
     
     <div class="container"><br><br> 
-        @yield('contenido')
+        @yield('contenido')        
     </div>  
 
     <script src="https://kit.fontawesome.com/6f7642fa53.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>
