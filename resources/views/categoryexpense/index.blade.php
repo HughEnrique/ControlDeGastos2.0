@@ -26,7 +26,16 @@
                 <td>{{$category->name}}</td>
                 <td>{{$category->date}}</td>
                 <td>
-                <a href="{{ route('categoryexpense.edit', $category) }}" class="btn btn-warning">Editar</a>                    
+                <a href="{{ route('categoryexpense.edit', $category) }}" class="btn btn-warning">Editar</a>
+                <a class="btn btn-danger" href="{{ route('categoryexpense.destroy', $category) }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('delete-category').submit();">
+                    Eliminar
+                </a>
+
+                <form id="delete-category" action="{{ route('categoryexpense.destroy', $category) }}" method="POST" style="display: none;">
+                    @csrf @method('DELETE')
+                </form>                     
                 </td>                
             </tr>
             @endforeach

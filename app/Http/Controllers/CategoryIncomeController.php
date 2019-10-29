@@ -98,8 +98,10 @@ class CategoryIncomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CategoryIncome $categoryincome)
     {
-        //
+        $categoryincome->delete();
+
+        return redirect()->route('categoryincome.index')->with('status','Eliminado con éxito.');
     }
 }

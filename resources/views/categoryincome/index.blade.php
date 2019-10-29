@@ -10,8 +10,8 @@
     </h2>
     <button type="button" class="btn btn-outline-primary"><a class="nav-link" href="{{ route('categoryincome.create') }}">Nueva Categoría de Ingreso</a></button>
     <div class="container"><br>
-    <table class="table table-dark">
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
@@ -26,7 +26,18 @@
                 <td>{{$category->name}}</td>
                 <td>{{$category->date}}</td>
                 <td>
-                <a href="{{ route('categoryincome.edit', $category) }}" class="btn btn-warning">Editar</a>                    
+                <a href="{{ route('categoryincome.edit', $category) }}" class="btn btn-warning">
+                    <i class="fas fa-edit"></i>
+                </a>  
+                <a class="btn btn-danger" href="{{ route('categoryincome.destroy', $category) }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('delete-category').submit();">
+                    Eliminar
+                </a>
+
+                <form id="delete-category" action="{{ route('categoryincome.destroy', $category) }}" method="POST" style="display: none;">
+                    @csrf @method('DELETE')
+                </form>                  
                 </td>                
             </tr>
             @endforeach

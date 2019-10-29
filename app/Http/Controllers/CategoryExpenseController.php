@@ -98,8 +98,10 @@ class CategoryExpenseController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CategoryExpense $categoryexpense)
     {
-        //
+        $categoryexpense->delete();
+
+        return redirect()->route('categoryexpense.index')->with('status','Eliminado con éxito.');
     }
 }

@@ -33,7 +33,16 @@
                         @endif
                         <td>{{$expense->date}}</td>
                         <td>
-                        <a href="{{ route('expense.edit', $expense) }}" class="btn btn-warning">Editar</a>                    
+                        <a href="{{ route('expense.edit', $expense) }}" class="btn btn-warning">Editar</a>
+                        <a class="btn btn-danger" href="{{ route('expense.destroy', $expense) }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('delete-expense').submit();">
+                                        Eliminar
+                                    </a>
+
+                        <form id="delete-expense" action="{{ route('expense.destroy', $expense) }}" method="POST" style="display: none;">
+                                        @csrf @method('DELETE')
+                        </form>                    
                         </td>
                     </tr>
                 @endforeach

@@ -105,8 +105,10 @@ class IncomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Income $income)
     {
-        //
+        $income->delete();
+
+        return redirect()->route('income.index')->with('status','Eliminado con éxito.');        
     }
 }
