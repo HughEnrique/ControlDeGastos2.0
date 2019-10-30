@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CategoryIncome;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class CategoryIncomeController extends Controller
 {
@@ -45,8 +46,9 @@ class CategoryIncomeController extends Controller
         ]);
 
         CategoryIncome::create($fields);
+        $alert = Alert::success('Registro Exitoso', 'Se ha guardo los datos correctamente');
 
-        return redirect()->route('categoryincome.index')->with('status','Registro exitoso');
+        return redirect()->route('categoryincome.index', compact('alert'));
     }
 
     /**
@@ -88,8 +90,9 @@ class CategoryIncomeController extends Controller
         ]);
 
         $categoryincome->update($fields);
+        $alert = Alert::success('Editado con Exito', 'Se ha editado los datos correctamente');
 
-        return redirect()->route('categoryincome.index')->with('status','Editado con éxito.');
+        return redirect()->route('categoryincome.index', compact('alert'));
     }
 
     /**
@@ -102,6 +105,8 @@ class CategoryIncomeController extends Controller
     {
         $categoryincome->delete();
 
-        return redirect()->route('categoryincome.index')->with('status','Eliminado con éxito.');
+        $alert = Alert::success('Eliminado con Exito', 'Se ha eliminado los datos correctamente');
+
+        return redirect()->route('categoryincome.index', compact('alert'));
     }
 }

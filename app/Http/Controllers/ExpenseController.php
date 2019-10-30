@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Expense;
 use App\CategoryExpense;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ExpenseController extends Controller
 {
@@ -49,8 +50,9 @@ class ExpenseController extends Controller
         ]);
 
         Expense::create($fields);
+        $alert = Alert::success('Registro Exitoso', 'Se ha guardo los datos correctamente');
 
-        return redirect()->route('expense.index')->with('status','Registro exitoso');
+        return redirect()->route('expense.index', compact('alert'));
     }
 
     /**
@@ -95,8 +97,9 @@ class ExpenseController extends Controller
         ]);
 
         $expense->update($fields);
+        $alert = Alert::success('Editado con Exito', 'Se ha editado los datos correctamente');
 
-        return redirect()->route('expense.index')->with('status','Editado con éxito.');
+        return redirect()->route('expense.index', compact('alert'));
     }
 
     /**
@@ -109,6 +112,8 @@ class ExpenseController extends Controller
     {
         $expense->delete();
 
-        return redirect()->route('expense.index')->with('status','Eliminado con éxito.');
+        $alert = Alert::success('Eliminado con Exito', 'Se ha eliminado los datos correctamente');
+
+        return redirect()->route('expense.index', compact('alert'));
     }
 }

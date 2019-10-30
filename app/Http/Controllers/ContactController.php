@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\MessageReceived; 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ContactController extends Controller
 {
@@ -18,7 +19,8 @@ class ContactController extends Controller
         ]);
         
         Mail::to('hugo@gmail.com')->queue(new MessageReceived($msg));
+        $alert = Alert::success('Mensaje enviado','Recibimos tu mensaje, te responderemos en menos de 24 horas.');
         
-        return back()->with('status','Recibimos tu mensaje, te responderemos en menos de 24 horas.');
+        return back(compact('alert'));
     }
 }

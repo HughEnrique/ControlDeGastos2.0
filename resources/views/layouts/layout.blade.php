@@ -12,7 +12,7 @@
     @include('layouts.nav')
     <div class="container">
         <div class="container">
-            @include('layouts.session-status')
+            @include('sweetalert::alert')
         </div>
     </div>
     

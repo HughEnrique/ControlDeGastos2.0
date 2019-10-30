@@ -38,7 +38,8 @@
                 <div class="col-sm-10">
                     <input name="date" type="date" class="form-control" value="{{old('date', $income->date)}}">
                 </div>
-            </div> 
+            </div>
+            <a href="{{ route('income.index') }}" class="btn btn-outline-dark">Cancelar</a> 
             <button type="submit" class="btn btn-outline-primary">Guardar</button> 
         </form>
     </div>
